@@ -1,0 +1,15 @@
+
+<div class="w3-container">
+    <p>
+    <label>Nome</label>
+    <input placeholder="insira o nome" class="w3-input" type="text" [(ngModel)]="request.nome"></p>
+    <p>
+    <label>Preco</label>
+    <input class="w3-input" type="text" placeholder="insira o preço" [(ngModel)]="request.preco"></p>
+    <p>
+    <label>Descrição</label>
+    <input class="w3-input" type="text" placeholder="insira a decrição" [(ngModel)]="request.descricao"></p>
+    <button class="w3-button w3-teal" (click)="update()">Gravar</button>
+</div>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

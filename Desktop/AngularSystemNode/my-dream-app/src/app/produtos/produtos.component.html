@@ -1,0 +1,21 @@
+
+  <p><a routerLink="/produtos/create" style="width: 100%;" class="w3-button w3-black">CRIAR UM NOVO PRODUTO</a></p>
+<table class="w3-table" *ngIf="responseProdutos">
+    <thead>
+        <td>Nome</td>
+        <td>Preco</td>
+        <td>Descricao</td>
+        <td>...</td>
+
+    </thead>
+    <tbody>
+    <tr *ngFor="let produtos of responseProdutos">
+        <td>{{produtos.nome}}</td>
+        <td>{{produtos.preco}}</td>
+        <td>{{produtos.descricao}}</td>
+        <td><a routerLink="/produtos/update/{{produtos._id}}">EDITAR |<a routerLink="/produtos/delete/{{produtos._id}}">REMOVER</a> </a></td>
+    </tr>
+    </tbody>
+</table>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
