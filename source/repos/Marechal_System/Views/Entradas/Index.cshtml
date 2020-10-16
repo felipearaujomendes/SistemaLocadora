@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Marechal_System.Models.Entrada>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+    <div class="card">
+        @if (ViewBag.Error != null)
+        {
+            <div style="text-align:center" class="alert alert-danger">
+                <strong>Ops!</strong>@ViewBag.Error.
+            </div>
+        }
+        @if (TempData["Success"] != null)
+        {
+            <div style="text-align:center" class="alert alert-success">
+                <strong>@TempData["Success"]!!</strong>
+            </div>
+        }
+        <div class="row clearfix">
+            <form action="/Entradas/Filter" method="post" enctype="multipart/form-data">
+
+                <div class="body col-sm-3">
+                    <div class="form-group">
+                        <div class="form-line focused">
+                            <br />
+                            <input name="filtro" type="text" class="form-control" placeholder="Digite um filtro" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="form-group">
+
+                        <div class="form-line disabled">
+                            <div class="body">
+                                <div class="row clearfix">
+
+                                    <div class="demo-radio-button">
+
+                                        <input name="group1" type="radio" class="with-gap" id="radio_1" value="codigo" />
+                                        <label for="radio_1">CODIGO</label>
+                                        <input name="group1" type="radio" class="with-gap" id="radio_2" value="nome" />
+                                        <label for="radio_2">NOME</label>
+                                        <input name="group1" type="radio" class="with-gap" id="radio_3" value="caixa" />
+                                        <label for="radio_3">CAIXA</label>
+                                        <button class="btn btn-default waves-effect">
+                                            <i class="material-icons">search</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+<div class="card">
+
+    <a href="/Entradas/Create" type="button" class="btn btn-danger waves-effect" style="width:100%;background-color:#0b5ba6 !important">ADICIONAR</a><br />
+    <div class="body table-responsive">
+
+
+        <table class="table table-striped">
+            <tr>
+                <th>CODIGO</th>
+                <th>NOME</th>
+                <th>CAIXA</th>
+                <th>QTD</th>
+                <th>DATA</th>
+                @*<th></th>*@
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Codigo</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Caixa</td>
+                    <td>@item.Quantidade</td>
+                    <td>@item.DataCadastro</td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>*@
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
