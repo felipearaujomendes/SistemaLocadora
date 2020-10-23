@@ -19,7 +19,7 @@ namespace Marechal_System.Controllers
         // GET: Entradas
         public ActionResult Index()
         {
-            return View(db.Entradas.ToList());
+            return View();
         }
 
         [HttpPost]
@@ -75,6 +75,8 @@ namespace Marechal_System.Controllers
         // GET: Entradas/Create
         public ActionResult Create()
         {
+            ViewBag.UltimoCaixa = db.Entradas.OrderByDescending(x => x.Caixa).FirstOrDefault().Caixa;
+
             return View();
         }
 
