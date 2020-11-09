@@ -28,8 +28,7 @@ namespace Marechal_System.Controllers
             if(group1 == null)
             {
                 ViewBag.Error = "Escolha um filtro!";
-                var queryData = db.Entradas.ToList();
-                return View("Index", queryData);
+                return View("Index");
             }
                 
             if (group1 == "codigo") { 
@@ -126,8 +125,10 @@ namespace Marechal_System.Controllers
         {
             if (ModelState.IsValid)
             {
+                entrada.DataCadastro = DateTime.Now;
                 db.Entry(entrada).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["Success"] = "Dados editados com sucesso!";
                 return RedirectToAction("Index");
             }
             return View(entrada);

@@ -1,4 +1,15 @@
 ﻿<!DOCTYPE html>
+@{
+    if (User.IsInRole("Admin"))
+    {
+        ViewBag.ColorBackground = "#101010";
+        ViewBag.Texto = "Administrador";
+    }
+    else
+    {
+        ViewBag.Texto = "Usuário";
+    }
+}
 <html>
 
 <head>
@@ -69,129 +80,137 @@
     </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
 
 
-                <a class="navbar-brand" href="index.html">MARECHAL IMOVEIS - ADMIN</a>
-
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                @Html.Partial("_LoginPartial")
-
-            </div>
-        </div>
-    </nav>
-    <!-- #Top Bar -->
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="~/images/user.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Marechal Imoveis</div>
-
-                </div>
-            </div>
-            <!-- #User Info -->
-            <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li>
-                        <a href="/Home/">
-                            <i class="material-icons">home</i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/Entradas/">
-                            <i class="material-icons">playlist_add_check</i>
-                            <span>Entradas</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- #Menu -->
-            <!-- Footer -->
-            <div class="legal">
-                <div class="copyright">
-                    &copy; @DateTime.Now.Year</a>
-                </div>
-            </div>
-            <!-- #Footer -->
-        </aside>
-
-    </section>
-
-    <section class="content">
-        <div class="container-fluid">
-
-            @RenderBody()
+            <nav class="navbar" style="background-color:@ViewBag.ColorBackground">
+              
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                            <a href="javascript:void(0);" class="bars"></a>
 
 
-        </div>
-    </section>
+                            <a class="navbar-brand" href="index.html">MARECHAL IMOVEIS - @ViewBag.Texto</a>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/inputmask")
-    @RenderSection("scripts", required: false)
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbar-collapse">
+                            @Html.Partial("_LoginPartial")
 
-    <!-- Jquery Core Js -->
-    <script src="~/plugins/jquery/jquery.min.js"></script>
+                        </div>
+                    </div>
+                </nav>
 
-    <!-- Bootstrap Core Js -->
-    <script src="~/plugins/bootstrap/js/bootstrap.js"></script>
+                <!-- #Top Bar -->
+                <section>
+                    <!-- Left Sidebar -->
+                    <aside id="leftsidebar" class="sidebar">
+                        <!-- User Info -->
+                        <div class="user-info">
+                            <div class="image">
+                                <img src="~/images/user.png" width="48" height="48" alt="User" />
+                            </div>
+                            <div class="info-container">
+                                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Marechal Imoveis</div>
 
-    <!-- Select Plugin Js -->
-    <script src="~/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+                            </div>
+                        </div>
+                        <!-- #User Info -->
+                        <!-- Menu -->
+                        <div class="menu">
+                            <ul class="list">
+                                <li>
+                                    <a href="/Home/">
+                                        <i class="material-icons">home</i>
+                                        <span>Home</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Entradas/">
+                                        <i class="material-icons">playlist_add_check</i>
+                                        <span>Entradas</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- #Menu -->
+                        <!-- Footer -->
+                        <div class="legal">
+                            <div class="copyright">
+                                &copy; @DateTime.Now.Year</a>
+                            </div>
+                        </div>
+                        <!-- #Footer -->
+                    </aside>
 
-    <!-- Slimscroll Plugin Js -->
-    <script src="~/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+                </section>
 
-    <!-- Waves Effect Plugin Js -->
-    <script src="~/plugins/node-waves/waves.js"></script>
+                <section class="content">
+                    <div class="container-fluid">
 
-    <!-- Jquery CountTo Plugin Js -->
-    <script src="~/plugins/jquery-countto/jquery.countTo.js"></script>
+                        @RenderBody()
 
-    <!-- Morris Plugin Js -->
-    <script src="~/plugins/raphael/raphael.min.js"></script>
-    <script src="~/plugins/morrisjs/morris.js"></script>
 
-    <!-- ChartJs -->
-    <script src="~/plugins/chartjs/Chart.bundle.js"></script>
+                    </div>
+                </section>
 
-    <!-- Flot Charts Plugin Js -->
-    <script src="~/plugins/flot-charts/jquery.flot.js"></script>
-    <script src="~/plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="~/plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="~/plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="~/plugins/flot-charts/jquery.flot.time.js"></script>
+                @Scripts.Render("~/bundles/jquery")
+                @Scripts.Render("~/bundles/jqueryval")
 
-    <!-- Sparkline Chart Plugin Js -->
-    <script src="~/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+                @Scripts.Render("~/bundles/bootstrap")
+                @Scripts.Render("~/bundles/inputmask")
+                @RenderSection("scripts", required: false)
 
-    <!-- Custom Js -->
-    <script src="~/js/admin.js"></script>
-    <script src="~/js/pages/index.js"></script>
+                <!-- Jquery Core Js -->
+                <script src="~/plugins/jquery/jquery.min.js"></script>
 
-    <!-- Demo Js -->
-    <script src="js/demo.js"></script>
-    <style>
-        .theme-red .navbar {
-            background-color: #0b5ba6;
-        }
-    </style>
-    <script>
-$('.alert').delay(3000).hide(0); 
-    </script>
+                <!-- Bootstrap Core Js -->
+                <script src="~/plugins/bootstrap/js/bootstrap.js"></script>
+
+                <!-- Select Plugin Js -->
+                <script src="~/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+                <!-- Slimscroll Plugin Js -->
+                <script src="~/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+                <!-- Waves Effect Plugin Js -->
+                <script src="~/plugins/node-waves/waves.js"></script>
+
+                <!-- Jquery CountTo Plugin Js -->
+                <script src="~/plugins/jquery-countto/jquery.countTo.js"></script>
+
+                <!-- Morris Plugin Js -->
+                <script src="~/plugins/raphael/raphael.min.js"></script>
+                <script src="~/plugins/morrisjs/morris.js"></script>
+
+                <!-- ChartJs -->
+                <script src="~/plugins/chartjs/Chart.bundle.js"></script>
+
+                <!-- Flot Charts Plugin Js -->
+                <script src="~/plugins/flot-charts/jquery.flot.js"></script>
+                <script src="~/plugins/flot-charts/jquery.flot.resize.js"></script>
+                <script src="~/plugins/flot-charts/jquery.flot.pie.js"></script>
+                <script src="~/plugins/flot-charts/jquery.flot.categories.js"></script>
+                <script src="~/plugins/flot-charts/jquery.flot.time.js"></script>
+
+                <!-- Sparkline Chart Plugin Js -->
+                <script src="~/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+                <!-- Custom Js -->
+                <script src="~/js/admin.js"></script>
+                <script src="~/js/pages/index.js"></script>
+
+                <!-- Demo Js -->
+                <script src="js/demo.js"></script>
+                <style>
+                    .theme-red .navbar {
+                        background-color: #0b5ba6;
+                    }
+                </style>
+                <script>
+                    $('.alert').delay(3000).hide(0);
+
+
+                </script>
 </body>
 
 </html>

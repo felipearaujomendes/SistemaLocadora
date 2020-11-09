@@ -9,27 +9,59 @@
 
 @using (Html.BeginForm())
 {
+
+
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Entrada</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
 
-        @Html.HiddenFor(model => model.Codigo)
+                <div class="body">
 
-        @Html.HiddenFor(model => model.Nome)
+                    <h2 class="card-inside-title" style="text-align:center">CAMPOS DE ENTRADA</h2>
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
 
-        @Html.HiddenFor(model => model.Caixa)
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label>Código</label>
+                                    @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label>Nome</label>
+                                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label>Caixa</label>
+                                    @Html.EditorFor(model => model.Caixa, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Caixa, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label>Quantidade</label>
+                                    @Html.EditorFor(model => model.Quantidade, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Quantidade, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-        @Html.HiddenFor(model => model.Quantidade)
 
-        @Html.HiddenFor(model => model.DataCadastro)
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                        <div class="col-md-offset-10 col-md-10">
+                            <input type="submit" value="Salvar" class="btn btn-success" />
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
         </div>
     </div>
